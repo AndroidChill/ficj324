@@ -32,9 +32,9 @@ object NetworkModule {
     @Provides
     fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         val client = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
+//        if (BuildConfig.DEBUG) {
             client.addInterceptor(loggingInterceptor)
-        }
+//        }
         return client.build()
     }
 

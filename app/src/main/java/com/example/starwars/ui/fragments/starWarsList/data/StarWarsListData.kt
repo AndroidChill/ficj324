@@ -1,4 +1,4 @@
-package com.example.starwars.ui.fragments.starWarsList
+package com.example.starwars.ui.fragments.starWarsList.data
 
 data class StarWarsListData(
     val name: String,

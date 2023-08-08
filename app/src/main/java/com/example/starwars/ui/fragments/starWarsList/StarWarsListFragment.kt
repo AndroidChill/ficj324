@@ -11,6 +11,9 @@ import com.example.starwars.dataBase.StarWarsDataEntity
 import com.example.starwars.databinding.FragmentStarWarsListBinding
 import com.example.starwars.di.core.abstraction.BaseFragment
 import com.example.starwars.ui.MainApplication
+import com.example.starwars.ui.fragments.starWarsList.data.StarWarsListData
+import com.example.starwars.ui.fragments.starWarsList.data.StarWarsListViewModel
+import com.example.starwars.ui.fragments.starWarsList.data.StarWarsState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -73,26 +76,28 @@ class StarWarsListFragment : BaseFragment<FragmentStarWarsListBinding, StarWarsL
                 it.events.forEach { event ->
                     when (event) {
                         is StarWarsState.Event.LoadAll -> {
-                            val data = event.data.map {
-                                StarWarsListData(
-                                    name = it.name,
-                                    gender = it.gender,
-                                    starships = it.starships,
-                                    isHeart = false
-                                )
-                            }
+//                            val data = event.data.map {
+//                                StarWarsListData(
+//                                    name = it.name,
+//                                    gender = it.gender,
+//                                    starships = it.starships,
+//                                    isHeart = false
+//                                )
+//                            }
 
-                            lifecycleScope.launch(Dispatchers.IO) {
-                                val name =
-                                    ((requireActivity()).application as? MainApplication)?.getDataBase()
-                                        ?.getStarWarsDao()?.getData()
-                                        ?.map { it.name } ?: emptyList()
-                                data.forEach { item ->
-                                    item.isHeart = name.contains(item.name)
-                                }
-                            }
-
-                            adapter.addData(data)
+//                            lifecycleScope.launch(Dispatchers.IO) {
+//                                val name =
+//                                    ((requireActivity()).application as? MainApplication)?.getDataBase()
+//                                        ?.getStarWarsDao()?.getData()
+//                                        ?.map { it.name } ?: emptyList()
+//                                data.forEach { item ->
+//                                    item.isHeart = name.contains(item.name)
+//                                }
+//                            }
+//
+//                            adapter.addData(data)
+                            
+                            adapter.submitData(event.data)
                         }
 
                         is StarWarsState.Event.ShowError -> {

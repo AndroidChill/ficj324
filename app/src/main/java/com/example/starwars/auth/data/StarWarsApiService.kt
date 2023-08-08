@@ -1,17 +1,18 @@
 package com.example.starwars.auth.data
 
 import kotlinx.serialization.Serializable
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface StarWarsApiService {
 
-    @GET("people/?page=1")
-    suspend fun getListPeoples(/*@Query("page") page: Int*/): ListStarWarsResponse
+    @GET("people/?")
+    suspend fun getListPeoples(@Query("page") page: Int): Response<ListStarWarsResponse>
 }
 
 data class ListStarWarsResponse(
-    val peoples: List<People>
+    val results: List<People>
 )
 
 @Serializable

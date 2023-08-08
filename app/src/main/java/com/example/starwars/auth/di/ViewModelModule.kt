@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.starwars.di.core.annotation.ViewModelKey
 import com.example.starwars.di.core.factory.ViewModelFactory
 import com.example.starwars.ui.activity.main.MainViewModel
-import com.example.starwars.ui.fragments.starWarsList.StarWarsListViewModel
+import com.example.starwars.ui.fragments.starWarsList.data.StarWarsListViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

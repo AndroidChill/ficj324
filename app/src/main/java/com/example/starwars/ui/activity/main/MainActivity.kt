@@ -23,11 +23,4 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         authComponent.inject(this)
     }
 
-    override fun initUI() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MainFragment())
-            .commit()
-
-    }
-
 }

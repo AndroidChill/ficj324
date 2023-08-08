@@ -2,6 +2,7 @@ package com.example.starwars.ui.fragments.starWarsList
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwars.R
+import com.example.starwars.auth.data.People
 import com.example.starwars.databinding.ItemInformationBinding
 
 class StarWarsListViewHolder(
@@ -31,6 +32,26 @@ class StarWarsListViewHolder(
             }
         }
 
+    }
+    
+    
+    fun testTransform(
+        people: People
+    ) {
+        with(binding) {
+            
+            tvName.text = "Cocktail name: ${people.name}"
+            tvGender.text = "Cocktail id: ${people.gender}"
+            tvStarships.text = "Cocktail category: ${people.starships}"
+//            isSelect = !isHeart
+            select()
+            
+            ivHeart.setOnClickListener {
+                onClickFavourite(people.name, isSelect)
+                select()
+            }
+        }
+        
     }
 
     private fun select() {
